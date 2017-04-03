@@ -110,6 +110,7 @@ const auth = require('feathers-authentication-client');
 
 const feathersClient = feathers();
 
+// NOTE: the order is important: auth must be configured _after_ rest/socket
 feathersClient.configure(hooks())
   .configure(rest('http://localhost:3030').superagent(superagent))
   .configure(auth({ storage: localStorage }));
